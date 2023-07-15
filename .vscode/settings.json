@@ -1,3 +1,6 @@
 {
-    "omnisharp.analyzeOpenDocumentsOnly": true
+    "omnisharp.analyzeOpenDocumentsOnly": true,
+    "editor.rulers": [
+        120
+    ]
 }
