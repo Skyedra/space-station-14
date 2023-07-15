@@ -34,8 +34,13 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (hand.HeldEntity == null)
             return false;
 
-        if (!hand.Container!.CanRemove(hand.HeldEntity.Value, EntityManager))
-            return false;
+        if (UseFullHandsSystem)
+        {
+            if (!hand.Container!.CanRemove(hand.HeldEntity.Value, EntityManager))
+                return false;
+        } else {
+            // TODO - we may wish to emulate the undroppable setting if it's ever used in gameplay?
+        }
 
         if (checkActionBlocker && !_actionBlocker.CanDrop(uid))
             return false;
@@ -157,15 +162,27 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!Resolve(uid, ref handsComp))
             return;
 
-        if (hand.Container?.ContainedEntity == null)
-            return;
-
-        var entity = hand.Container.ContainedEntity.Value;
-
-        if (!hand.Container.Remove(entity, EntityManager))
+        EntityUid entity;
+        if (UseFullHandsSystem)
         {
-            Log.Error($"Failed to remove {ToPrettyString(entity)} from users hand container when dropping. User: {ToPrettyString(uid)}. Hand: {hand.Name}.");
-            return;
+            if (hand.Container?.ContainedEntity == null)
+                return;
+            entity = hand.Container.ContainedEntity.Value;
+
+            if (!hand.Container.Remove(entity, EntityManager))
+            {
+                Log.Error($"Failed to remove {ToPrettyString(entity)} from users hand container when dropping. User: {ToPrettyString(uid)}. Hand: {hand.Name}.");
+                return;
+            }
+        } else {
+            HandSimplePointer handSimplePointer = (HandSimplePointer) hand;
+            if (handSimplePointer == null)
+                return; // should not happen, but could be a recently applied cvar change
+            else if (handSimplePointer.HeldEntity == null)
+                return;
+            entity = handSimplePointer.HeldEntity.Value;
+
+            handSimplePointer.SetEntity(null);
         }
 
         Dirty(handsComp);

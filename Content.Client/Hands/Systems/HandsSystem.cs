@@ -72,8 +72,14 @@ namespace Content.Client.Hands.Systems
                     if (component.Hands.ContainsKey(hand.Name))
                         continue;
 
-                    var container = _containerSystem.EnsureContainer<ContainerSlot>(uid, hand.Name, manager);
-                    var newHand = new Hand(hand.Name, hand.Location, container);
+                    Hand newHand;
+                    if (UseFullHandsSystem)
+                    {
+                        var container = _containerSystem.EnsureContainer<ContainerSlot>(uid, hand.Name, manager);
+                        newHand = new Hand(hand.Name, hand.Location, container);
+                    } else {
+                        newHand = new HandSimplePointer(hand.Name, hand.Location);
+                    }
                     component.Hands.Add(hand.Name, newHand);
                     addedHands.Add(newHand);
                 }

@@ -60,7 +60,7 @@ public sealed class HandsComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class Hand //TODO: This should definitely be a struct - Jezi
+public class Hand //TODO: This should definitely be a struct - Jezi
 {
     [ViewVariables]
     public string Name { get; }
@@ -76,7 +76,7 @@ public sealed class Hand //TODO: This should definitely be a struct - Jezi
     public ContainerSlot? Container;
 
     [ViewVariables]
-    public EntityUid? HeldEntity => Container?.ContainedEntity;
+    public virtual EntityUid? HeldEntity => Container?.ContainedEntity;
 
     public bool IsEmpty => HeldEntity == null;
 
@@ -85,6 +85,25 @@ public sealed class Hand //TODO: This should definitely be a struct - Jezi
         Name = name;
         Location = location;
         Container = container;
+    }
+}
+
+[Serializable, NetSerializable]
+public class HandSimplePointer : Hand
+{
+    [ViewVariables]
+    public override EntityUid? HeldEntity { get { return entityPointer; } }
+
+    public void SetEntity(EntityUid? entityUid)
+    {
+        entityPointer = entityUid;
+    }
+
+    private EntityUid? entityPointer = null;
+
+    public HandSimplePointer(string name, HandLocation location)
+        : base(name, location, null) // for simplicity, keeping compatability with hands enumation and whatnot to avoid throwing exceptions
+    {
     }
 }
 

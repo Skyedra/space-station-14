@@ -5,11 +5,15 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Content.Shared.Inventory;
+using Content.Shared.Storage;
 
 namespace Content.Shared.Hands.EntitySystems;
 
 public abstract partial class SharedHandsSystem : EntitySystem
 {
+    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+
     private void InitializePickup()
     {
         SubscribeLocalEvent<HandsComponent, EntInsertedIntoContainerMessage>(HandleEntityInserted);
@@ -79,8 +83,16 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!Resolve(uid, ref handsComp, false))
             return false;
 
-        if (!TryGetEmptyHand(uid, out var hand, handsComp))
-            return false;
+        Hand? hand = null;
+        if (UseFullHandsSystem)
+        {
+            if (!TryGetEmptyHand(uid, out hand, handsComp))
+                return false;
+        } else {
+            if (!TryGetHandPointer(uid, out var handSimple, handsComp))
+                return false;
+            hand = handSimple;
+        }
 
         return TryPickup(uid, entity, hand, checkActionBlocker, animateUser, animate, handsComp, item);
     }
@@ -151,10 +163,18 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!Resolve(uid, ref handsComp, false))
             return false;
 
-        if (!TryGetEmptyHand(uid, out var hand, handsComp))
-            return false;
+        if (UseFullHandsSystem)
+        {
+            if (!TryGetEmptyHand(uid, out var hand, handsComp))
+                return false;
 
-        return CanPickupToHand(uid, entity, hand, checkActionBlocker, handsComp, item);
+            return CanPickupToHand(uid, entity, hand, checkActionBlocker, handsComp, item);
+        } else {
+            if (!TryGetHandPointer(uid, out var hand, handsComp))
+                return false;
+
+            return CanPickupToHand(uid, entity, hand, checkActionBlocker, handsComp, item);
+        }
     }
 
     /// <summary>
@@ -165,9 +185,13 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!Resolve(uid, ref handsComp, false))
             return false;
 
-        var handContainer = hand.Container;
-        if (handContainer == null || handContainer.ContainedEntity != null)
-            return false;
+        ContainerSlot? handContainer = null;
+        if (UseFullHandsSystem)
+        {
+            handContainer = hand.Container;
+            if (handContainer == null || handContainer.ContainedEntity != null)
+                return false;
+        }
 
         if (!Resolve(entity, ref item, false))
             return false;
@@ -179,7 +203,15 @@ public abstract partial class SharedHandsSystem : EntitySystem
             return false;
 
         // check can insert (including raising attempt events).
-        return handContainer.CanInsert(entity, EntityManager);
+        if (UseFullHandsSystem)
+        {
+            if (handContainer != null)
+                return handContainer.CanInsert(entity, EntityManager);
+            else
+                throw new NullReferenceException("handContainer null -- This should never happen."); // making compiler happy
+        }
+        else
+            return true; // TODO - probably need to check inventory space if item isn't already in inventory
     }
 
     /// <summary>
@@ -213,14 +245,28 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (!Resolve(uid, ref hands))
             return;
 
-        var handContainer = hand.Container;
-        if (handContainer == null || handContainer.ContainedEntity != null)
-            return;
-
-        if (!handContainer.Insert(entity, EntityManager))
+        if (UseFullHandsSystem)
         {
-            Log.Error($"Failed to insert {ToPrettyString(entity)} into users hand container when picking up. User: {ToPrettyString(uid)}. Hand: {hand.Name}.");
-            return;
+            var handContainer = hand.Container;
+            if (handContainer == null || handContainer.ContainedEntity != null)
+                return;
+
+            if (!handContainer.Insert(entity, EntityManager))
+            {
+                Log.Error($"Failed to insert {ToPrettyString(entity)} into users hand container when picking up. User: {ToPrettyString(uid)}. Hand: {hand.Name}.");
+                return;
+            }
+        }
+        else
+        {
+            var handSimplePointer = (HandSimplePointer) hand;
+            if (handSimplePointer != null)
+            {
+                handSimplePointer.SetEntity(entity);
+            } else {
+                Log.Error($"Failed to insert {ToPrettyString(entity)} into users hand pointer -- did hand cvar changed this session?  User: {ToPrettyString(uid)}. Hand: {hand.Name}.");
+                return;
+            }
         }
 
         _adminLogger.Add(LogType.Pickup, LogImpact.Low, $"{ToPrettyString(uid):user} picked up {ToPrettyString(entity):entity}");
@@ -233,4 +279,19 @@ public abstract partial class SharedHandsSystem : EntitySystem
 
     public abstract void PickupAnimation(EntityUid item, EntityCoordinates initialPosition, Vector2 finalPosition,
         EntityUid? exclude);
+
+/*
+    protected virtual StorageSystem FindContainerForPickupItem(EntityUid uid, Hand hand, EntityUid entity)
+    {
+        // (Should this function be on another class like InventorySystem...?)
+
+        InventoryComponent? inventoryComponent = null;
+        _inventorySystem.GetSlots(uid, inventoryComponent);
+
+
+
+        var handContainer = hand.Container;
+        if (handContainer == null || handContainer.ContainedEntity != null)
+            return;
+            */
 }

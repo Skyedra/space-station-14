@@ -1463,6 +1463,12 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<float> DragDropDeadZone =
             CVarDef.Create("control.drag_dead_zone", 12f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+        /// <summary>
+        /// Traditional SS13/14 hands system.  Set to false to use simplified no-hands mode.
+        /// </summary>
+        public static readonly CVarDef<bool> UseHandsSystem =
+            CVarDef.Create("control.use_hands_system", true, CVar.SERVER | CVar.REPLICATED);
+
         /*
          * UPDATE
          */

@@ -22,6 +22,7 @@ public abstract partial class SharedHandsSystem : EntitySystem
     {
         base.Initialize();
 
+        InitializeCVars();
         InitializeInteractions();
         InitializeDrop();
         InitializePickup();
@@ -29,6 +30,7 @@ public abstract partial class SharedHandsSystem : EntitySystem
 
     public override void Shutdown()
     {
+        ShutdownCVars();
         base.Shutdown();
         CommandBinds.Unregister<SharedHandsSystem>();
     }
@@ -41,10 +43,21 @@ public abstract partial class SharedHandsSystem : EntitySystem
         if (handsComp.Hands.ContainsKey(handName))
             return;
 
-        var container = _containerSystem.EnsureContainer<ContainerSlot>(uid, handName);
-        container.OccludesLight = false;
+        // If using simplified hands system, then only allow one 'hand' (which will end up just being a pointer to the active entity)
+        if (!UseFullHandsSystem && handsComp.Hands.Count >= 1)
+            return;
 
-        var newHand = new Hand(handName, handLocation, container);
+        Hand newHand;
+        if (UseFullHandsSystem)
+        {
+            var container = _containerSystem.EnsureContainer<ContainerSlot>(uid, handName);
+            container.OccludesLight = false;
+            newHand = new Hand(handName, handLocation, container);
+        }
+        else
+        {
+            newHand = new HandSimplePointer(handName, handLocation);
+        }
         handsComp.Hands.Add(handName, newHand);
         handsComp.SortedHands.Add(handName);
 
@@ -96,6 +109,27 @@ public abstract partial class SharedHandsSystem : EntitySystem
             if (hand.IsEmpty)
             {
                 emptyHand = hand;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    // <summary>
+    ///     Get hand pointer (requires full hand system cvar to be false).
+    /// </summary>
+    public bool TryGetHandPointer(EntityUid uid, [NotNullWhen(true)] out HandSimplePointer? handSimplePointer, HandsComponent? handComp = null)
+    {
+        handSimplePointer = null;
+        if (!Resolve(uid, ref handComp, false))
+            return false;
+
+        foreach (var hand in EnumerateHands(uid, handComp))
+        {
+            if (hand is HandSimplePointer)
+            {
+                handSimplePointer = (HandSimplePointer) hand;
                 return true;
             }
         }
