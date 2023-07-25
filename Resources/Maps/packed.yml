@@ -7085,6 +7085,16 @@ entities:
       type: DeviceList
 - proto: AirCanister
   entities:
+  - uid: 2078
+    components:
+    - pos: 28.5,-23.5
+      parent: 2
+      type: Transform
+  - uid: 4555
+    components:
+    - pos: 28.5,-24.5
+      parent: 2
+      type: Transform
   - uid: 4572
     components:
     - pos: 32.5,-26.5
@@ -10221,11 +10231,6 @@ entities:
     - links:
       - 5685
       type: DeviceLinkSink
-    - inputs:
-        Open: []
-        Close: []
-        Toggle: []
-      type: SignalReceiver
   - uid: 2835
     components:
     - pos: 12.5,-27.5
@@ -10234,11 +10239,6 @@ entities:
     - links:
       - 5685
       type: DeviceLinkSink
-    - inputs:
-        Open: []
-        Close: []
-        Toggle: []
-      type: SignalReceiver
 - proto: BlockGameArcade
   entities:
   - uid: 1812
@@ -10642,11 +10642,6 @@ entities:
         - Start: Close
         - Timer: AutoClose
         - Timer: Open
-      registeredSinks:
-        Start:
-        - 2258
-        Timer:
-        - 2258
       type: DeviceLinkSource
   - uid: 7718
     components:
@@ -10658,11 +10653,6 @@ entities:
         - Start: Close
         - Timer: AutoClose
         - Timer: Open
-      registeredSinks:
-        Start:
-        - 2259
-        Timer:
-        - 2259
       type: DeviceLinkSource
 - proto: Brutepack
   entities:
@@ -35641,9 +35631,6 @@ entities:
     - linkedPorts:
         8666:
         - ArtifactAnalyzerSender: ArtifactAnalyzerReceiver
-      registeredSinks:
-        ArtifactAnalyzerSender:
-        - 8666
       type: DeviceLinkSource
   - uid: 10667
     components:
@@ -36065,11 +36052,6 @@ entities:
     - links:
       - 7808
       type: DeviceLinkSink
-    - inputs:
-        Reverse: []
-        Forward: []
-        Off: []
-      type: SignalReceiver
   - uid: 2038
     components:
     - rot: 1.5707963267948966 rad
@@ -36079,11 +36061,6 @@ entities:
     - links:
       - 7808
       type: DeviceLinkSink
-    - inputs:
-        Reverse: []
-        Forward: []
-        Off: []
-      type: SignalReceiver
   - uid: 2039
     components:
     - rot: -1.5707963267948966 rad
@@ -36093,17 +36070,6 @@ entities:
     - links:
       - 2154
       type: DeviceLinkSink
-    - inputs:
-        Reverse:
-        - port: Right
-          uid: 2154
-        Forward:
-        - port: Left
-          uid: 2154
-        Off:
-        - port: Middle
-          uid: 2154
-      type: SignalReceiver
   - uid: 2040
     components:
     - rot: -1.5707963267948966 rad
@@ -36113,17 +36079,6 @@ entities:
     - links:
       - 2154
       type: DeviceLinkSink
-    - inputs:
-        Reverse:
-        - port: Right
-          uid: 2154
-        Forward:
-        - port: Left
-          uid: 2154
-        Off:
-        - port: Middle
-          uid: 2154
-      type: SignalReceiver
   - uid: 2041
     components:
     - rot: 1.5707963267948966 rad
@@ -36133,11 +36088,6 @@ entities:
     - links:
       - 7808
       type: DeviceLinkSink
-    - inputs:
-        Reverse: []
-        Forward: []
-        Off: []
-      type: SignalReceiver
   - uid: 2042
     components:
     - rot: 1.5707963267948966 rad
@@ -36147,11 +36097,6 @@ entities:
     - links:
       - 7808
       type: DeviceLinkSink
-    - inputs:
-        Reverse: []
-        Forward: []
-        Off: []
-      type: SignalReceiver
   - uid: 2051
     components:
     - rot: -1.5707963267948966 rad
@@ -36161,17 +36106,6 @@ entities:
     - links:
       - 2154
       type: DeviceLinkSink
-    - inputs:
-        Reverse:
-        - port: Right
-          uid: 2154
-        Forward:
-        - port: Left
-          uid: 2154
-        Off:
-        - port: Middle
-          uid: 2154
-      type: SignalReceiver
   - uid: 2064
     components:
     - rot: 1.5707963267948966 rad
@@ -36181,11 +36115,6 @@ entities:
     - links:
       - 7808
       type: DeviceLinkSink
-    - inputs:
-        Reverse: []
-        Forward: []
-        Off: []
-      type: SignalReceiver
   - uid: 2066
     components:
     - rot: -1.5707963267948966 rad
@@ -36195,17 +36124,6 @@ entities:
     - links:
       - 2154
       type: DeviceLinkSink
-    - inputs:
-        Reverse:
-        - port: Right
-          uid: 2154
-        Forward:
-        - port: Left
-          uid: 2154
-        Off:
-        - port: Middle
-          uid: 2154
-      type: SignalReceiver
   - uid: 2067
     components:
     - rot: -1.5707963267948966 rad
@@ -36215,17 +36133,6 @@ entities:
     - links:
       - 2154
       type: DeviceLinkSink
-    - inputs:
-        Reverse:
-        - port: Right
-          uid: 2154
-        Forward:
-        - port: Left
-          uid: 2154
-        Off:
-        - port: Middle
-          uid: 2154
-      type: SignalReceiver
   - uid: 5285
     components:
     - rot: 1.5707963267948966 rad
@@ -39507,6 +39414,16 @@ entities:
   - uid: 12491
     components:
     - pos: 27.5,1.5
+      parent: 2
+      type: Transform
+  - uid: 12837
+    components:
+    - pos: 26.5,-27.5
+      parent: 2
+      type: Transform
+  - uid: 12838
+    components:
+    - pos: 26.5,-26.5
       parent: 2
       type: Transform
 - proto: DisposalTrunk
@@ -62388,6 +62305,13 @@ entities:
     - pos: 55.5,9.5
       parent: 2
       type: Transform
+- proto: OreProcessor
+  entities:
+  - uid: 12839
+    components:
+    - pos: 9.5,20.5
+      parent: 2
+      type: Transform
 - proto: OreProcessorMachineCircuitboard
   entities:
   - uid: 12364
@@ -62405,16 +62329,6 @@ entities:
   - uid: 2833
     components:
     - pos: 42.5,-37.5
-      parent: 2
-      type: Transform
-  - uid: 4555
-    components:
-    - pos: 28.5,-24.5
-      parent: 2
-      type: Transform
-  - uid: 4556
-    components:
-    - pos: 28.5,-23.5
       parent: 2
       type: Transform
   - uid: 4570
@@ -62798,11 +62712,6 @@ entities:
   - uid: 484
     components:
     - pos: 4.5,-14.5
-      parent: 2
-      type: Transform
-  - uid: 2078
-    components:
-    - pos: 9.5,20.5
       parent: 2
       type: Transform
   - uid: 5874
@@ -69114,11 +69023,6 @@ entities:
     - links:
       - 8288
       type: DeviceLinkSink
-    - inputs:
-        Open: []
-        Close: []
-        Toggle: []
-      type: SignalReceiver
   - uid: 6512
     components:
     - rot: -1.5707963267948966 rad
@@ -69136,11 +69040,6 @@ entities:
     - links:
       - 8288
       type: DeviceLinkSink
-    - inputs:
-        Open: []
-        Close: []
-        Toggle: []
-      type: SignalReceiver
   - uid: 12425
     components:
     - pos: 51.5,1.5
@@ -69149,11 +69048,6 @@ entities:
     - links:
       - 8288
       type: DeviceLinkSink
-    - inputs:
-        Open: []
-        Close: []
-        Toggle: []
-      type: SignalReceiver
   - uid: 12822
     components:
     - pos: 28.5,20.5
@@ -69232,9 +69126,6 @@ entities:
     - linkedPorts:
         55:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 55
       type: DeviceLinkSource
   - uid: 374
     components:
@@ -69245,9 +69136,6 @@ entities:
     - linkedPorts:
         7462:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 7462
       type: DeviceLinkSource
   - uid: 1025
     components:
@@ -69266,12 +69154,6 @@ entities:
         - Pressed: Toggle
         4503:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 779
-        - 780
-        - 4502
-        - 4503
       type: DeviceLinkSource
   - uid: 1151
     components:
@@ -69291,13 +69173,6 @@ entities:
         - Pressed: Toggle
         419:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 1154
-        - 913
-        - 6512
-        - 1658
-        - 419
       type: DeviceLinkSource
   - uid: 1471
     components:
@@ -69313,11 +69188,6 @@ entities:
         - Pressed: Toggle
         270:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 265
-        - 267
-        - 270
       type: DeviceLinkSource
   - uid: 4245
     components:
@@ -69327,9 +69197,6 @@ entities:
     - linkedPorts:
         4257:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 4257
       type: DeviceLinkSource
   - uid: 5685
     components:
@@ -69343,10 +69210,6 @@ entities:
         - Pressed: Toggle
         2835:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 2834
-        - 2835
       type: DeviceLinkSource
   - uid: 6749
     components:
@@ -69361,10 +69224,6 @@ entities:
         - Pressed: Toggle
         6514:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 6513
-        - 6514
       type: DeviceLinkSource
   - uid: 6856
     components:
@@ -69377,9 +69236,6 @@ entities:
     - linkedPorts:
         7618:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 7618
       type: DeviceLinkSource
   - uid: 7463
     components:
@@ -69390,9 +69246,6 @@ entities:
     - linkedPorts:
         384:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 384
       type: DeviceLinkSource
   - uid: 8163
     components:
@@ -69404,10 +69257,6 @@ entities:
         - Pressed: Toggle
         320:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 2831
-        - 320
       type: DeviceLinkSource
   - uid: 8288
     components:
@@ -69422,11 +69271,6 @@ entities:
         - Pressed: Toggle
         12425:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 12424
-        - 2990
-        - 12425
       type: DeviceLinkSource
   - uid: 10321
     components:
@@ -69436,9 +69280,6 @@ entities:
     - linkedPorts:
         150:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 150
       type: DeviceLinkSource
   - uid: 12825
     components:
@@ -69450,10 +69291,6 @@ entities:
         - Pressed: Toggle
         12823:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 2087
-        - 12823
       type: DeviceLinkSource
   - uid: 12826
     components:
@@ -69465,10 +69302,6 @@ entities:
         - Pressed: Toggle
         12824:
         - Pressed: Toggle
-      registeredSinks:
-        Pressed:
-        - 12822
-        - 12824
       type: DeviceLinkSource
 - proto: SignAnomaly
   entities:
@@ -72408,8 +72241,7 @@ entities:
       type: SurveillanceCamera
   - uid: 12721
     components:
-    - rot: 3.141592653589793 rad
-      pos: 10.5,7.5
+    - pos: 10.5,3.5
       parent: 2
       type: Transform
     - setupAvailableNetworks:
@@ -74894,88 +74726,6 @@ entities:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
-      registeredSinks:
-        Left:
-        - 6843
-        - 7667
-        - 6844
-        - 7891
-        - 7841
-        - 7875
-        - 7949
-        - 7586
-        - 6825
-        - 7672
-        - 7585
-        - 2028
-        - 6823
-        - 7888
-        - 6820
-        - 7849
-        - 2030
-        - 7671
-        - 6846
-        - 7880
-        - 7878
-        - 7879
-        - 7876
-        - 5285
-        - 1319
-        - 6775
-        Right:
-        - 6843
-        - 7667
-        - 6844
-        - 7891
-        - 7841
-        - 7875
-        - 7949
-        - 7586
-        - 6825
-        - 7672
-        - 7585
-        - 2028
-        - 6823
-        - 7888
-        - 6820
-        - 7849
-        - 2030
-        - 7671
-        - 6846
-        - 7880
-        - 7878
-        - 7879
-        - 7876
-        - 5285
-        - 1319
-        - 6775
-        Middle:
-        - 6843
-        - 7667
-        - 6844
-        - 7891
-        - 7841
-        - 7875
-        - 7949
-        - 7586
-        - 6825
-        - 7672
-        - 7585
-        - 2028
-        - 6823
-        - 7888
-        - 6820
-        - 7849
-        - 2030
-        - 7671
-        - 6846
-        - 7880
-        - 7878
-        - 7879
-        - 7876
-        - 5285
-        - 1319
-        - 6775
       type: DeviceLinkSource
   - uid: 2154
     components:
@@ -75003,61 +74753,7 @@ entities:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
-      registeredSinks:
-        Left:
-        - 2039
-        - 2040
-        - 2067
-        - 2051
-        - 2066
-        Right:
-        - 2039
-        - 2040
-        - 2067
-        - 2051
-        - 2066
-        Middle:
-        - 2039
-        - 2040
-        - 2067
-        - 2051
-        - 2066
       type: DeviceLinkSource
-    - outputs:
-        Left:
-        - port: Forward
-          uid: 2039
-        - port: Forward
-          uid: 2040
-        - port: Forward
-          uid: 2067
-        - port: Forward
-          uid: 2051
-        - port: Forward
-          uid: 2066
-        Right:
-        - port: Reverse
-          uid: 2039
-        - port: Reverse
-          uid: 2040
-        - port: Reverse
-          uid: 2067
-        - port: Reverse
-          uid: 2051
-        - port: Reverse
-          uid: 2066
-        Middle:
-        - port: Off
-          uid: 2039
-        - port: Off
-          uid: 2040
-        - port: Off
-          uid: 2067
-        - port: Off
-          uid: 2051
-        - port: Off
-          uid: 2066
-      type: SignalTransmitter
   - uid: 5856
     components:
     - pos: 2.5,-30.5
@@ -75112,46 +74808,6 @@ entities:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
-      registeredSinks:
-        Left:
-        - 5842
-        - 5843
-        - 5844
-        - 5845
-        - 5846
-        - 5847
-        - 5850
-        - 5851
-        - 5852
-        - 5853
-        - 5854
-        - 5855
-        Right:
-        - 5842
-        - 5843
-        - 5844
-        - 5845
-        - 5846
-        - 5847
-        - 5850
-        - 5851
-        - 5852
-        - 5853
-        - 5854
-        - 5855
-        Middle:
-        - 5842
-        - 5843
-        - 5844
-        - 5845
-        - 5846
-        - 5847
-        - 5850
-        - 5851
-        - 5852
-        - 5853
-        - 5854
-        - 5855
       type: DeviceLinkSource
   - uid: 5857
     components:
@@ -75163,13 +74819,6 @@ entities:
         - Left: Open
         - Right: Open
         - Middle: Close
-      registeredSinks:
-        Left:
-        - 5875
-        Right:
-        - 5875
-        Middle:
-        - 5875
       type: DeviceLinkSource
   - uid: 7808
     components:
@@ -75197,25 +74846,6 @@ entities:
         - Left: Forward
         - Right: Reverse
         - Middle: Off
-      registeredSinks:
-        Left:
-        - 2038
-        - 2037
-        - 2041
-        - 2042
-        - 2064
-        Right:
-        - 2038
-        - 2037
-        - 2041
-        - 2042
-        - 2064
-        Middle:
-        - 2038
-        - 2037
-        - 2041
-        - 2042
-        - 2064
       type: DeviceLinkSource
   - uid: 8665
     components:
@@ -75231,16 +74861,6 @@ entities:
         - Left: Open
         - Right: Open
         - Middle: Close
-      registeredSinks:
-        Left:
-        - 5351
-        - 5361
-        Right:
-        - 5351
-        - 5361
-        Middle:
-        - 5351
-        - 5361
       type: DeviceLinkSource
   - uid: 10322
     components:
@@ -75252,13 +74872,6 @@ entities:
         - Left: Open
         - Right: Open
         - Middle: Close
-      registeredSinks:
-        Left:
-        - 5268
-        Right:
-        - 5268
-        Middle:
-        - 5268
       type: DeviceLinkSource
 - proto: UnfinishedMachineFrame
   entities:
@@ -85937,10 +85550,21 @@ entities:
       type: Transform
 - proto: WindoorSecureCargoLocked
   entities:
+  - uid: 4556
+    components:
+    - pos: 9.5,20.5
+      parent: 2
+      type: Transform
   - uid: 10119
     components:
     - rot: -1.5707963267948966 rad
       pos: 21.5,22.5
+      parent: 2
+      type: Transform
+  - uid: 12840
+    components:
+    - rot: 3.141592653589793 rad
+      pos: 9.5,20.5
       parent: 2
       type: Transform
 - proto: WindoorSecureChemistryLocked
