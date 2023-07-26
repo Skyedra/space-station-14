@@ -25,6 +25,8 @@ using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Content.Shared.Emag.Components;
+using Content.Shared.Emag.Systems;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -64,6 +66,7 @@ namespace Content.Server.Kitchen.EntitySystems
             SubscribeLocalEvent<MicrowaveComponent, SuicideEvent>(OnSuicide);
             SubscribeLocalEvent<MicrowaveComponent, RefreshPartsEvent>(OnRefreshParts);
             SubscribeLocalEvent<MicrowaveComponent, UpgradeExamineEvent>(OnUpgradeExamine);
+            SubscribeLocalEvent<MicrowaveComponent, GotEmaggedEvent>(OnEmagged);
 
             SubscribeLocalEvent<MicrowaveComponent, MicrowaveStartCookMessage>((u, c, m) => Wzhzhzh(u, c, m.Session.AttachedEntity));
             SubscribeLocalEvent<MicrowaveComponent, MicrowaveEjectMessage>(OnEjectMessage);
@@ -249,6 +252,12 @@ namespace Content.Server.Kitchen.EntitySystems
                 return;
             }
 
+            // Emag is used via OnEmagged
+            if (HasComp<EmagComponent>(args.Used))
+            {
+                return;
+            }
+
             if (!HasComp<ItemComponent>(args.Used))
             {
                 _popupSystem.PopupEntity(Loc.GetString("microwave-component-interact-using-transfer-fail"), uid, args.User);
@@ -377,7 +386,18 @@ namespace Content.Server.Kitchen.EntitySystems
                 {
                     component.Broken = true;
                     SetAppearance(uid, MicrowaveVisualState.Broken, component);
-                    beginHaywire = true;
+
+                    if (HasComp<EmaggedComponent>(uid))
+                    {
+                        // Microloose
+                        beginHaywire = true;
+                    }
+                    else
+                    {
+                        // Regular break
+                        _audio.PlayPvs(component.ItemBreakSound, uid);
+                        return;
+                    }
                 }
 
                 if (_tag.HasTag(item, "MicrowaveSelfUnsafe") || _tag.HasTag(item, "Plastic"))
@@ -551,6 +571,22 @@ namespace Content.Server.Kitchen.EntitySystems
                 EntityManager.RemoveComponentDeferred<ActiveMicrowaveComponent>(uid);
                 _audio.PlayPvs(microwave.FoodDoneSound, uid, AudioParams.Default.WithVolume(-1));
             }
+        }
+
+        /// <summary>
+        /// On emag, microwave can enter haywire mode when metal is inserted into it.
+        /// </summary>
+        private void OnEmagged(EntityUid uid, MicrowaveComponent microwave, ref GotEmaggedEvent args)
+        {
+            if (!(TryComp<ApcPowerReceiverComponent>(uid, out var apc) && apc.Powered))
+            {
+                _popupSystem.PopupEntity(Loc.GetString("microwave-component-interact-using-no-power"), uid, args.UserUid);
+                return;
+            }
+
+            _audio.PlayPvs(microwave.ClickSound, uid);
+            _popupSystem.PopupEntity(Loc.GetString("microwave-component-emag"), uid);
+            args.Handled = true;
         }
 
         #region ui
