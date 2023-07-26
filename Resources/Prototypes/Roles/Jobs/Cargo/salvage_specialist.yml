@@ -4,12 +4,16 @@
   description: job-description-salvagespec
   playTimeTracker: JobSalvageSpecialist
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: Cargo
-      time: 3600
+    # - !type:DepartmentTimeRequirement
+    #   department: Cargo
+    #   time: 10800 # 3 hrs
+    # - !type:OverallPlaytimeRequirement
+    #   time: 36000 #10 hrs
+    - !type:OverallPlaytimeRequirement
+      time: 900 # 15 min
   icon: "ShaftMiner"
   startingGear: SalvageSpecialistGear
-  supervisors: job-supervisors-hop-qm
+  supervisors: job-supervisors-qm
   access:
   - Cargo
   - Salvage

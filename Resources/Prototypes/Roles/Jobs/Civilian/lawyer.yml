@@ -3,6 +3,11 @@
   name: job-name-lawyer
   description: job-description-lawyer
   playTimeTracker: JobLawyer
+  requirements:
+    # - !type:OverallPlaytimeRequirement
+    #   time: 36000 # 10 hrs
+    - !type:OverallPlaytimeRequirement
+      time: 900 # 15 min
   startingGear: LawyerGear
   icon: "Lawyer"
   supervisors: job-supervisors-hop

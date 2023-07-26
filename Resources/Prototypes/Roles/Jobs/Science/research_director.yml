@@ -4,11 +4,11 @@
   description: job-description-rd
   playTimeTracker: JobResearchDirector
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: Science
-      time: 18000
-    - !type:OverallPlaytimeRequirement
-      time: 108000
+    # - !type:DepartmentTimeRequirement
+    #   department: Science
+    #   time: 108000 # 30 hrs
+      - !type:OverallPlaytimeRequirement
+        time: 900 # 15 min
   weight: 10
   startingGear: ResearchDirectorGear
   icon: "ResearchDirector"
@@ -27,7 +27,7 @@
     jumpsuit: ClothingUniformJumpsuitResearchDirector
     back: ClothingBackpackResearchDirectorFilled
     shoes: ClothingShoesColorBrown
-    outerClothing: ClothingOuterCoatLab
+    outerClothing: ClothingOuterCoatRnd
     id: RnDPDA
     ears: ClothingHeadsetRD
   innerclothingskirt: ClothingUniformJumpskirtResearchDirector

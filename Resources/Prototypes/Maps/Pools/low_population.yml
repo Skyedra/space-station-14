@@ -1,0 +1,18 @@
+- type: gameMapPool
+  id: LowPopulationMapPool
+  maps:
+  #- Aspid
+  #- Bagel
+  #- Barratry
+  #- Box
+  - Cluster
+  #- Fland
+  #- Kettle
+  #- Marathon
+  #- Meta
+  # Moose would be a good choice but supposedly isn't updated for suit storage:
+  ##- Moose
+  - Omega
+  #- Origin
+  - Saltern
+  #- Packed

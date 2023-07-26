@@ -98,7 +98,7 @@
 - type: entity
   parent: AirlockFreezer
   id: AirlockFreezerLocked
-  suffix: Service, Locked
+  suffix: Kitchen, Locked
   components:
   - type: AccessReader
     access: [["Kitchen"]]
@@ -142,14 +142,6 @@
   components:
   - type: AccessReader
     access: [["Salvage"]]
-
-- type: entity
-  parent: AirlockCargo
-  id: AirlockQuartermasterLocked
-  suffix: Quartermaster, Locked
-  components:
-  - type: AccessReader
-    access: [["Quartermaster"]]
 
 - type: entity
   parent: AirlockMedical
@@ -250,12 +242,30 @@
     access: [["HeadOfPersonnel"]]
 
 - type: entity
+  parent: AirlockCommand
+  id: AirlockQuartermasterLocked
+  suffix: Quartermaster, Locked
+  components:
+  - type: AccessReader
+    access: [["Quartermaster"]]
+
+- type: entity
   parent: AirlockSecurity
   id: AirlockSecurityLocked
   suffix: Security, Locked
   components:
   - type: AccessReader
     access: [["Security"]]
+  - type: Wires
+    LayoutId: AirlockSecurity
+
+- type: entity
+  parent: AirlockSecurity
+  id: AirlockDetectiveLocked
+  suffix: Detective, Locked
+  components:
+  - type: AccessReader
+    access: [["Detective"]]
   - type: Wires
     LayoutId: AirlockSecurity
 
@@ -401,14 +411,6 @@
     access: [["Salvage"]]
 
 - type: entity
-  parent: AirlockCargoGlass
-  id: AirlockQuartermasterGlassLocked
-  suffix: Quartermaster, Locked
-  components:
-  - type: AccessReader
-    access: [["Quartermaster"]]
-
-- type: entity
   parent: AirlockMedicalGlass
   id: AirlockMedicalGlassLocked
   suffix: Medical, Locked
@@ -497,12 +499,28 @@
     access: [["HeadOfPersonnel"]]
 
 - type: entity
+  parent: AirlockCommandGlass
+  id: AirlockQuartermasterGlassLocked
+  suffix: Quartermaster, Locked
+  components:
+  - type: AccessReader
+    access: [["Quartermaster"]]
+
+- type: entity
   parent: AirlockSecurityGlass
   id: AirlockSecurityGlassLocked
   suffix: Security, Locked
   components:
   - type: AccessReader
     access: [["Security"]]
+
+- type: entity
+  parent: AirlockSecurityGlass
+  id: AirlockDetectiveGlassLocked
+  suffix: Detective, Locked
+  components:
+  - type: AccessReader
+    access: [["Detective"]]
 
 - type: entity
   parent: AirlockSecurityGlass
@@ -688,6 +706,14 @@
   components:
   - type: AccessReader
     access: [["Security"]]
+
+- type: entity
+  parent: AirlockMaint
+  id: AirlockMaintDetectiveLocked
+  suffix: Detective, Locked
+  components:
+  - type: AccessReader
+    access: [["Detective"]]
 
 - type: entity
   parent: AirlockMaint

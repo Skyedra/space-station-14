@@ -1,4 +1,6 @@
 ﻿using Content.Shared.Actions;
+using Content.Shared.Radio;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Implants.Components;
 
@@ -48,6 +50,19 @@ public sealed class UseFreedomImplantEvent : InstantActionEvent
 /// Used for triggering trigger events on the implant via action
 /// </summary>
 public sealed class ActivateImplantEvent : InstantActionEvent
+{
+
+}
+
+/// <summary>
+/// Used for opening the uplink implant via action.
+/// </summary>
+public sealed class OpenUplinkImplantEvent : InstantActionEvent
+{
+
+}
+
+public sealed class UseDnaScramblerImplantEvent : InstantActionEvent
 {
 
 }

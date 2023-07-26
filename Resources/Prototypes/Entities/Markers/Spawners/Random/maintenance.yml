@@ -24,7 +24,6 @@
         - BalloonCorgi
         - PonderingOrb
         - Skub
-        - ClothingHeadHatCatEars
         - DrinkMugDog
         - ClothingNeckLGBTPin
         - ClothingNeckAromanticPin
@@ -36,6 +35,8 @@
         - ClothingNeckPansexualPin
         - ClothingNeckTransPin
         - CluwneHorn
+        - ClothingMaskRat
+        - MysteryFigureBox
       rareChance: 0.01
       prototypes:
         - Lighter
@@ -53,6 +54,12 @@
         - ClothingUnderSocksBee
         - ClothingUnderSocksCoder
         - ClothingHeadHatSquid
+        - ClothingMaskFox
+        - ClothingMaskBee
+        - ClothingMaskBear
+        - ClothingMaskRaven
+        - ClothingMaskJackal
+        - ClothingMaskBat
       chance: 0.6
       offset: 0.0
 
@@ -88,6 +95,7 @@
         - SheetSteel
         - SheetPlastic
         - ResearchDisk
+        - Plunger
       chance: 0.6
       offset: 0.0
 
