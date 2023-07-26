@@ -31,6 +31,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using System.Numerics;
 
 namespace Content.Server.Kitchen.EntitySystems
 {
