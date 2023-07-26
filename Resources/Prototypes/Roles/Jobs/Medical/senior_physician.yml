@@ -4,15 +4,18 @@
   description: job-description-senior-physician
   playTimeTracker: JobSeniorPhysician
   requirements:
-    - !type:RoleTimeRequirement
-      role: JobChemist
-      time: 43200 #12 hrs
-    - !type:RoleTimeRequirement
-      role: JobMedicalDoctor
-      time: 43200 #12 hrs
+    # - !type:RoleTimeRequirement
+    #   role: JobChemist
+    #   time: 43200 #12 hrs
+    # - !type:RoleTimeRequirement
+    #   role: JobMedicalDoctor
+    #   time: 43200 #12 hrs
+    # - !type:DepartmentTimeRequirement
+    #   department: Medical
+    #   time: 216000 # 60 hrs
     - !type:DepartmentTimeRequirement
       department: Medical
-      time: 216000 # 60 hrs
+      time: 3600 # 1 hr
   startingGear: SeniorPhysicianGear
   icon: "SeniorPhysician"
   supervisors: job-supervisors-cmo
