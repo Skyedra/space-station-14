@@ -892,8 +892,8 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitNoERP
-  name: "No ERP"
-  description: "This poster reminds the crew that Eroticism and Pornography are banned on Nanotrasen stations."
+  name: "ERP?"
+  description: "It could happen to you!"
   components:
   - type: Sprite
     state: poster34_legit
