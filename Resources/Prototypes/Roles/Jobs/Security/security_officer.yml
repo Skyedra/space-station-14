@@ -10,7 +10,7 @@
     - !type:OverallPlaytimeRequirement
       time: 900 # 15 min
   startingGear: SecurityOfficerGear
-  icon: "SecurityOfficer"
+  icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
   canBeAntag: false
   access:

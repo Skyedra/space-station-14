@@ -10,7 +10,7 @@
       - !type:OverallPlaytimeRequirement
         time: 900 # 15 min
   startingGear: ChemistGear
-  icon: "Chemist"
+  icon: "JobIconChemist"
   supervisors: job-supervisors-cmo
   access:
   - Medical

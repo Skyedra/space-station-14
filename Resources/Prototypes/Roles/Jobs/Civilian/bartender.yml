@@ -10,7 +10,7 @@
     - !type:OverallPlaytimeRequirement
       time: 900 # 15 min
   startingGear: BartenderGear
-  icon: "Bartender"
+  icon: "JobIconBartender"
   supervisors: job-supervisors-hop
   access:
   - Service

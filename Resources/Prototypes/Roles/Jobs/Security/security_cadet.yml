@@ -13,7 +13,7 @@
     - !type:OverallPlaytimeRequirement
       time: 900 # 15 min
   startingGear: SecurityCadetGear
-  icon: "SecurityCadet"
+  icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
   canBeAntag: false
   access:

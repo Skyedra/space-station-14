@@ -1,7 +1,7 @@
 using Content.Server.Light.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.DeviceLinking;
-using Content.Shared.Light.Component;
+using Content.Shared.Light.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -13,7 +13,7 @@ namespace Content.Server.Light.Components
     ///     Component that represents a wall light. It has a light bulb that can be replaced when broken.
     /// </summary>
     [RegisterComponent, Access(typeof(PoweredLightSystem))]
-    public sealed class PoweredLightComponent : Component
+    public sealed partial class PoweredLightComponent : Component
     {
         [DataField("burnHandSound")]
         public SoundSpecifier BurnHandSound = new SoundPathSpecifier("/Audio/Effects/lightburn.ogg");
@@ -68,5 +68,17 @@ namespace Content.Server.Light.Components
         /// </summary>
         [DataField("ejectBulbDelay")]
         public float EjectBulbDelay = 2;
+
+        /// <summary>
+        /// Shock damage done to a mob that hits the light with an unarmed attack
+        /// </summary>
+        [DataField("unarmedHitShock")]
+        public int UnarmedHitShock = 20;
+
+        /// <summary>
+        /// Stun duration applied to a mob that hits the light with an unarmed attack
+        /// </summary>
+        [DataField("unarmedHitStun")]
+        public TimeSpan UnarmedHitStun = TimeSpan.FromSeconds(5);
     }
 }

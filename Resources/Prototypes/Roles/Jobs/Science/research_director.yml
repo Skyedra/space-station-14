@@ -6,12 +6,12 @@
   requirements:
     # - !type:DepartmentTimeRequirement
     #   department: Science
-    #   time: 108000 # 30 hrs
+    #   time: 36000 #10 hrs
       - !type:OverallPlaytimeRequirement
         time: 900 # 15 min
   weight: 10
   startingGear: ResearchDirectorGear
-  icon: "ResearchDirector"
+  icon: "JobIconResearchDirector"
   requireAdminNotify: true
   supervisors: job-supervisors-captain
   canBeAntag: false
