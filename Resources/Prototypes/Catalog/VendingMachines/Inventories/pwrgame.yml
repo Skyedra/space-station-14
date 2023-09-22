@@ -2,7 +2,8 @@
   id: PwrGameInventory
   startingInventory:
     DrinkPwrGameCan: 4
-    DrinkEnergyDrinkCan: 4
+    DrinkBlepsiCan: 2
+    DrinkEnergyDrinkCan: 3
     DrinkGrapeCan: 2
     DrinkRootBeerCan: 2
     DrinkIcedTeaCan: 2

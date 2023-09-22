@@ -111,8 +111,10 @@
   components:
   - type: StorageFill
     contents:
-    - id: DrinkColaCan
+    - id: DrinkBlepsiCan
       amount: 4
+    - id: DrinkColaCan
+      amount: 2
     - id: DrinkGrapeCan
       amount: 2
     - id: DrinkRootBeerCan
@@ -130,12 +132,14 @@
   components:
   - type: StorageFill
     contents:
-      - id: DrinkColaCan
+      - id: DrinkBlepsiCan
         amount: 8
+      - id: DrinkColaCan
+        amount: 4
       - id: DrinkGrapeCan
-        amount: 4
+        amount: 2
       - id: DrinkRootBeerCan
-        amount: 4
+        amount: 2
       - id: DrinkIcedTeaCan
         amount: 4
       - id: DrinkLemonLimeCan

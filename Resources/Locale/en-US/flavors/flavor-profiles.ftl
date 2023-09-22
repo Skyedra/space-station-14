@@ -174,6 +174,7 @@ flavor-complex-coffee = like coffee
 flavor-complex-milk = like milk
 flavor-complex-tea = like tea
 flavor-complex-ice = like ice
+flavor-complex-dragon-kisses = like dragon kisses
 
 ## Cocktails
 flavor-complex-long-island = suspiciously like iced tea

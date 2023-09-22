@@ -87,6 +87,15 @@
   color: "#9385bf"
 
 - type: reagent
+  id: Blepsi
+  name: Blepsi
+  parent: BaseSoda
+  desc: Real blep energy!
+  physicalDesc: sticky and sweet
+  flavor: dragon-kisses
+  color: "#e1849f"
+
+- type: reagent
   id: RootBeer
   name: reagent-name-root-beer
   parent: BaseSoda

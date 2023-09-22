@@ -427,3 +427,22 @@
     sprite: Objects/Consumable/Drinks/pwrgame.rsi
   - type: Item
     sprite: Objects/Consumable/Drinks/pwrgame.rsi
+
+- type: entity
+  parent: DrinkCanBaseFull
+  id: DrinkBlepsiCan
+  name: blepsi can
+  description: Real blep energy!
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Blepsi
+          Quantity: 30
+  - type: Drink
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/blepsi.rsi
+  - type: Item
+    sprite: Objects/Consumable/Drinks/blepsi.rsi

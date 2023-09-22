@@ -3,6 +3,7 @@
   startingInventory:
     DrinkStarkistCan: 4
     DrinkGrapeCan: 2
+    DrinkBlepsiCan: 2
     DrinkRootBeerCan: 2
     DrinkIcedTeaCan: 2
     DrinkLemonLimeCan: 2
